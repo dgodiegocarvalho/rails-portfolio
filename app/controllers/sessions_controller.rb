@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(email: params[:session][:email].downcase)
+        user = User.find_by(username: params[:session][:username])
         if user && user.authenticate(params[:session][:password])
             sign_in(user)
             if user_admin?
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
             end
             flash.now[:success] = 'Usuário logado com sucesso'
         else
-            flash.now[:danger] = 'Email e Senha inválidos'
+            flash.now[:danger] = 'Username e Senha inválidos'
             render 'new'
         end
     end
