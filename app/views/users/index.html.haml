@@ -1,0 +1,27 @@
+- if @users.any?
+    .col-md-8.col-md-offset-2.col-xs-12
+        %table.table.table-striped
+            %thead
+                %tr
+                    %th Name
+                    %th Username
+                    %th Email
+                    %th Is Admin?
+                    %th Action
+            %tbody
+                - if @users.empty?
+                    %tr
+                        %td.text-center{:colspan => 5}
+                            %h3 Sem contatos cadastrados.
+                            = link_to 'click here', new_user_path 
+                            para cadastrar um novo contato
+                - @users.each do |user|
+                    %tr
+                        %td= user.name
+                        %td= user.username
+                        %td= user.email
+                        %td= user.admin
+                        %td
+                            = link_to 'Edit', edit_user_path(user.id), class: 'btn btn-warning'
+                            = link_to 'Delete', user_path(user.id), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' }
+        = link_to 'New User', new_user_path, class: 'btn btn-success'
