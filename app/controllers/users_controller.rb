@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :require_logged_in_user, only: [:show, :edit, :update, :index]
+    before_action :require_logged_in_user, only: [:show, :edit, :update, :index, :new]
     
     def index
       if user_admin?

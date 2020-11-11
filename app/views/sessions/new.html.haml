@@ -11,6 +11,7 @@
 
       .form-group
         = f.label :password 
-        = f.password_field :password, placeholder: 'Senha', class: 'form-control' 
+        = f.password_field :password, placeholder: 'Password', class: 'form-control' 
 
-      = f.submit 'Entrar', class: 'btn btn-primary' 
+      = f.submit 'Sign in', class: 'btn btn-primary' 
+      = link_to 'Sign up', new_user_path, class: 'btn btn-primary' 
